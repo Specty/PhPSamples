@@ -36,15 +36,20 @@ class Tournament
         {
             echo $this->name . ", " . date('Y.m.d', strtotime($this->date));
             $this->echoBr();
+            
             for ($j=0; $j<count($arr1); $j++)
             {
-                if($arr1[$j]->getName()!="Zaglushka" && $arr2[$j]->getName()!="Zaglushka")
-                {
+                if (
+                    $arr1[$j]->getName()!="Zaglushka" 
+                    && $arr2[$j]->getName()!="Zaglushka"
+                ) {
                     echo $this->echoPlayer($arr1[$j]) . " - ". $this->echoPlayer($arr2[$j]);
                     $this->echoBr();
                 }
             }
+            
             $this->date = date('Y-m-d', strtotime($this->date . ' +1 day')); //change date for next turik
+            
             $locked = array_shift($arr1); //lock 1 player for algorithm
             //array shifting
             $temp = array_shift($arr1);
